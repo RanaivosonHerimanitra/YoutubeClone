@@ -19,8 +19,14 @@ YTSearch({key: youtubeAPI_KEY, term:"react js"}, function(data) {
 
 //immutable in es:  const
 //jsx dialect of javascript
-const App = () =>{
+/*const App = () =>{
   return <div><SearchBar/></div>;
+}*/
+
+class App extends Component {
+  render () {
+    return <div><SearchBar/></div>;
+  }
 }
 // App is a class
 // to instantiate it: <App/>
