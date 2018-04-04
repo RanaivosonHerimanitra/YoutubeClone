@@ -1,11 +1,15 @@
 //this imports is needed whenever a component use jsx:
-import React from 'react'
+import React, {Component} from 'react'
 
-// way to go to write a component class
-class SearchBar extends React.Component {
+// way to go to write a component class (class based component)
+class SearchBar extends Component {
 
     render () {
-        return <input/>
+        return <input onChange= {this.onInputChange}/>
+    }
+
+    onInputChange () {
+
     }
 
 }
