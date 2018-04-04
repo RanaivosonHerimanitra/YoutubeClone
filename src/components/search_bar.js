@@ -4,11 +4,22 @@ import React, {Component} from 'react'
 // way to go to write a component class (class based component)
 class SearchBar extends Component {
 
-    render () {
-        return <input onChange= {this.onInputChange}/>
+    constructor(props) {
+        super(props);
+        this.state = {term:""}
     }
 
-    onInputChange () {
+    render () {
+        return (
+        <div>
+          <input onChange= {event=>this.setState({term:event.target.value})}/>
+          Value of the input u tape: {this.state.term}
+        </div>
+        )
+    }
+
+    onInputChange (event) {
+        console.log (event.target.value)
 
     }
 
