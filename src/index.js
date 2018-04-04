@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
 import ReactDOM from 'react-dom'
-
+import SearchBar from './components/search_bar'
 const youtubeAPI_KEY = "AIzaSyC5G7JVOw6qpkheAUlt_nQcCSBVIbV8968"
 //immutable in es:  const
 //jsx dialect of javascript

@@ -3,3 +3,6 @@ import React from 'react'
 const SearchBar = () => {
     return <input/>
 }
+
+//to be exportable
+export default SearchBar;
