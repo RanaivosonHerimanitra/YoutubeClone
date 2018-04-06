@@ -22,20 +22,22 @@ const youtubeAPI_KEY = "AIzaSyC5G7JVOw6qpkheAUlt_nQcCSBVIbV8968"
 class App extends Component {
   constructor(props) {
     super(props)
-    this.state= {videoList:[]}
+    this.state= {videoList:[],selectedVideo: null}
     /*
      usage de l'API de recherche de youtube
     */
     YTSearch( {key: youtubeAPI_KEY, term:"react js"}, video =>{
-       this.setState({videoList: video});
+       this.setState({videoList: video, selectedVideo:video[0]});
      })
   }
 
   render () {
     return <div>
       <SearchBar/>
-      <VideoDetail video = {this.state.videoList[0]}/>
-      <VideoList videos = {this.state.videoList}/>
+      // la ou on affiche la video courante (en cours)
+      <VideoDetail video = {this.state.selectedVideo}/>
+      <VideoList onVideoSelect={selectedVideo=>this.setState({selectedVideo})} 
+              videos = {this.state.videoList}/>
     </div>;
   }
 }
