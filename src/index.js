@@ -1,7 +1,7 @@
 /*
  import toujours avant n'importe quel code!!
 */
-
+import _ from 'lodash';
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom'
 import SearchBar from './components/search_bar'
@@ -23,17 +23,25 @@ class App extends Component {
   constructor(props) {
     super(props)
     this.state= {videoList:[],selectedVideo: null}
-    /*
+   this.videoSearch("reactjs")
+  }
+  // callback function to handle component
+  //update after a search:
+  videoSearch (term) {
+     /*
      usage de l'API de recherche de youtube
     */
-    YTSearch( {key: youtubeAPI_KEY, term:"react js"}, video =>{
-       this.setState({videoList: video, selectedVideo:video[0]});
-     })
+   YTSearch( {key: youtubeAPI_KEY, term:term}, video =>{
+    this.setState({videoList: video, selectedVideo:video[0]});
+  })
+
   }
 
   render () {
+
+    const videoSearch = _.debounce((term)=>{ this.videoSearch(term)},300)
     return <div>
-      <SearchBar/>
+      <SearchBar onSearchTermChange = {videoSearch}/>
       // la ou on affiche la video courante (en cours)
       <VideoDetail video = {this.state.selectedVideo}/>
       <VideoList onVideoSelect={selectedVideo=>this.setState({selectedVideo})} 
